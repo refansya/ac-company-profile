@@ -1,0 +1,80 @@
+:root {
+  /* =========================
+     BRAND COLORS
+  ========================= */
+
+  --color-primary: #0057ff;
+  --color-primary-hover: #0048d6;
+
+  --color-secondary: #00cfff;
+
+  --color-dark: #081120;
+
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+
+  --color-text: #0f172a;
+  --color-muted: #64748b;
+  --color-border: #e2e8f0;
+
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+
+  /* =========================
+     BORDER RADIUS
+  ========================= */
+
+  --radius-button: 16px;
+  --radius-input: 16px;
+  --radius-card: 28px;
+  --radius-section: 40px;
+
+  /* =========================
+     SHADOWS
+  ========================= */
+
+  --shadow-sm: 0 8px 24px rgba(8, 17, 32, 0.08);
+  --shadow-md: 0 16px 40px rgba(8, 17, 32, 0.12);
+  --shadow-lg: 0 30px 80px rgba(8, 17, 32, 0.18);
+
+  --shadow-glow: 0 20px 60px rgba(0, 87, 255, 0.35);
+
+  /* =========================
+     GRADIENTS
+  ========================= */
+
+  --gradient-primary: linear-gradient(135deg, #0057ff 0%, #00cfff 100%);
+
+  --gradient-primary-hover: linear-gradient(135deg, #0048d6 0%, #00b6ff 100%);
+
+  --gradient-surface: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.82)
+  );
+
+  /* =========================
+     Z-INDEX
+  ========================= */
+
+  --z-navbar: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+
+  /* =========================
+     LAYOUT
+  ========================= */
+
+  --navbar-height: 88px;
+  --section-padding: 120px;
+  --container-width: 1280px;
+
+  /* =========================
+     TRANSITIONS
+  ========================= */
+
+  --transition-fast: 200ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+}

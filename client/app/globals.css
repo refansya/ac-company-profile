@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@import "../styles/design-system.css";
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-background);
+
+    color: var(--color-text);
+
+    overflow-x: hidden;
+  }
+
+  a {
+    text-decoration: none;
+
+    color: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  img {
+    max-width: 100%;
+
+    display: block;
+  }
+}
