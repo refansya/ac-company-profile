@@ -14,8 +14,8 @@ export default function WhyChooseGrid() {
         xl:grid-cols-3
       "
     >
-      {ADVANTAGES.map((item) => (
-        <WhyChooseCard key={item.title} {...item} />
+      {ADVANTAGES.map((item, index) => (
+        <WhyChooseCard key={item.title} index={index + 1} {...item} />
       ))}
     </div>
   );

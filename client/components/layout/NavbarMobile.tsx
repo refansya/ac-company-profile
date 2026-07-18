@@ -11,7 +11,7 @@ import PrimaryButton from "@/components/shared/PrimaryButton";
 import { COMPANY } from "@/constants/company";
 import useActiveSection from "@/hooks/useActiveSection";
 
-import { NAV_LINKS } from "./navLinks";
+import { NAVIGATION } from "@/constants/navigation";
 
 export default function NavbarMobile() {
   const [open, setOpen] = useState(false);
@@ -139,7 +139,7 @@ export default function NavbarMobile() {
 
         {/* Navigation */}
         <nav className="space-y-2">
-          {NAV_LINKS.map((item) => {
+          {NAVIGATION.map((item) => {
             const active = activeSection === item.href.replace("#", "");
 
             return (

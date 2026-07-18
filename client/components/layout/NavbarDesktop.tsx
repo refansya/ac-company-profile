@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { NAV_LINKS } from "./navLinks";
+import { NAVIGATION } from "@/constants/navigation";
 import useActiveSection from "@/hooks/useActiveSection";
 
 export default function NavbarDesktop() {
@@ -17,7 +17,7 @@ export default function NavbarDesktop() {
         lg:flex
       "
     >
-      {NAV_LINKS.map((item) => {
+      {NAVIGATION.map((item) => {
         const isActive = activeSection === item.href.replace("#", "");
 
         return (
