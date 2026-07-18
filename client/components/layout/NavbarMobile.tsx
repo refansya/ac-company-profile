@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-import { ArrowRight, Menu, PhoneCall, X } from "lucide-react";
+import { ArrowRight, ChevronRight, Menu, PhoneCall, X } from "lucide-react";
 
 import Logo from "@/components/shared/Logo";
 import PrimaryButton from "@/components/shared/PrimaryButton";
+
 import { COMPANY } from "@/constants/company";
 import useActiveSection from "@/hooks/useActiveSection";
 
@@ -40,10 +41,10 @@ export default function NavbarMobile() {
   return (
     <div className="lg:hidden">
       {/* Hamburger */}
-
       <button
         type="button"
         aria-label="Open Navigation"
+        aria-expanded={open}
         onClick={() => setOpen(true)}
         className="
           flex
@@ -66,14 +67,13 @@ export default function NavbarMobile() {
       </button>
 
       {/* Overlay */}
-
       <div
         onClick={() => setOpen(false)}
         className={`
           fixed
           inset-0
           z-40
-          bg-black/30
+          bg-slate-950/30
           backdrop-blur-sm
           transition-all
           duration-300
@@ -87,7 +87,6 @@ export default function NavbarMobile() {
       />
 
       {/* Drawer */}
-
       <aside
         className={`
           fixed
@@ -96,27 +95,30 @@ export default function NavbarMobile() {
           z-50
 
           flex
-          h-screen
-          w-[340px]
-          max-w-[90vw]
+          h-dvh
+          w-[320px]
+          max-w-[85vw]
           flex-col
 
-          bg-white
+          border-l
+          border-slate-200
+
+          bg-white/95
+          backdrop-blur-xl
 
           p-6
 
           shadow-2xl
 
-          transition-transform
+          transition-all
           duration-300
 
-          ${open ? "translate-x-0" : "translate-x-full"}
+          ${open ? "translate-x-0 visible" : "translate-x-full invisible"}
         `}
       >
         {/* Header */}
-
         <div className="flex items-center justify-between">
-          <Logo />
+          <Logo className="h-9" />
 
           <button
             type="button"
@@ -133,10 +135,9 @@ export default function NavbarMobile() {
           </button>
         </div>
 
-        <div className="my-8 h-px bg-slate-200" />
+        <div className="my-6 h-px bg-slate-200" />
 
-        {/* Menu */}
-
+        {/* Navigation */}
         <nav className="space-y-2">
           {NAV_LINKS.map((item) => {
             const active = activeSection === item.href.replace("#", "");
@@ -147,12 +148,20 @@ export default function NavbarMobile() {
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={`
-                  block
+                  group
+
+                  flex
+                  items-center
+                  justify-between
+
                   rounded-xl
+
                   px-4
                   py-3
+
                   text-base
                   font-semibold
+
                   transition-all
                   duration-300
 
@@ -164,14 +173,35 @@ export default function NavbarMobile() {
                 `}
               >
                 {item.label}
+
+                <ChevronRight
+                  size={18}
+                  className="
+                    opacity-0
+                    transition-all
+                    duration-300
+
+                    group-hover:translate-x-1
+                    group-hover:opacity-100
+                  "
+                />
               </Link>
             );
           })}
         </nav>
 
         {/* Footer */}
-
         <div className="mt-auto space-y-4">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">
+              Need Assistance?
+            </p>
+
+            <p className="mt-1 text-sm text-slate-500">
+              Contact our team anytime.
+            </p>
+          </div>
+
           <Link
             href={COMPANY.whatsappUrl}
             target="_blank"
@@ -192,7 +222,8 @@ export default function NavbarMobile() {
               text-sm
               font-medium
 
-              transition
+              transition-all
+              duration-300
 
               hover:border-blue-200
               hover:text-[var(--color-primary)]

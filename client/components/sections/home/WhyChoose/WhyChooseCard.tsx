@@ -1,43 +1,93 @@
+import { LucideIcon, ArrowUpRight } from "lucide-react";
+
 interface Props {
+  icon: LucideIcon;
   title: string;
   description: string;
-  icon: React.ElementType;
+  index: number;
 }
 
 export default function WhyChooseCard({
+  icon: Icon,
   title,
   description,
-  icon: Icon,
+  index,
 }: Props) {
   return (
-    <article
+    <div
       className="
         group
+        relative
+        overflow-hidden
 
         rounded-[28px]
 
         border
-        border-slate-200
+        border-slate-200/80
 
-        bg-white
+        bg-white/80
 
         p-8
 
-        shadow-sm
+        backdrop-blur-xl
 
         transition-all
         duration-500
 
         hover:-translate-y-2
         hover:border-blue-200
-        hover:shadow-[0_20px_60px_rgba(0,87,255,.10)]
+        hover:shadow-[0_30px_70px_rgba(0,87,255,.12)]
       "
     >
+      {/* Hover Accent */}
+      <div
+        className="
+          absolute
+          left-0
+          top-0
+          h-1
+          w-0
+
+          bg-gradient-to-r
+          from-blue-600
+          via-blue-500
+          to-cyan-400
+
+          transition-all
+          duration-500
+
+          group-hover:w-full
+        "
+      />
+
+      {/* Number */}
+      <span
+        className="
+          absolute
+          right-7
+          top-5
+
+          text-5xl
+          font-black
+
+          text-slate-100
+
+          transition
+
+          group-hover:text-blue-100
+        "
+      >
+        {String(index).padStart(2, "0")}
+      </span>
+
+      {/* Icon */}
       <div
         className="
           flex
+
           h-16
           w-16
+
           items-center
           justify-center
 
@@ -49,19 +99,74 @@ export default function WhyChooseCard({
 
           text-white
 
-          transition-transform
+          shadow-lg
+
+          transition-all
           duration-500
 
           group-hover:scale-110
           group-hover:rotate-6
         "
       >
-        <Icon size={30} />
+        <Icon size={28} />
       </div>
 
-      <h3 className="mt-6 text-xl font-bold tracking-tight">{title}</h3>
+      <h3
+        className="
+          mt-8
 
-      <p className="mt-4 leading-7 text-slate-600">{description}</p>
-    </article>
+          text-xl
+          font-bold
+
+          tracking-tight
+
+          transition-colors
+
+          group-hover:text-[var(--color-primary)]
+        "
+      >
+        {title}
+      </h3>
+
+      <p
+        className="
+          mt-4
+
+          leading-7
+
+          text-slate-600
+        "
+      >
+        {description}
+      </p>
+
+      <div
+        className="
+          mt-8
+
+          flex
+          items-center
+          gap-2
+
+          text-sm
+          font-semibold
+
+          text-[var(--color-primary)]
+
+          opacity-0
+
+          transition-all
+          duration-500
+
+          group-hover:opacity-100
+        "
+      >
+        Learn More
+        <ArrowUpRight
+          size={16}
+          className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+        />
+      </div>
+    </div>
   );
 }

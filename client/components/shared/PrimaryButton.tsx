@@ -1,7 +1,7 @@
 "use client";
 
-import { forwardRef, ButtonHTMLAttributes, ReactNode } from "react";
-
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
 import { Loader2 } from "lucide-react";
 import { cva, type VariantProps } from "class-variance-authority";
 
@@ -9,39 +9,20 @@ import { cn } from "@/lib/utils";
 
 const primaryButtonVariants = cva(
   `
-    group
     inline-flex
     items-center
     justify-center
     gap-2
 
-    relative
-    overflow-hidden
-
     rounded-2xl
 
     font-semibold
-    text-white
-
+    whitespace-nowrap
     select-none
 
     transition-all
     duration-300
     ease-out
-
-    bg-gradient-to-r
-    from-blue-600
-    via-blue-500
-    to-cyan-500
-
-    shadow-lg
-
-    hover:-translate-y-1
-    hover:scale-[1.02]
-    hover:shadow-[0_20px_60px_rgba(0,87,255,.35)]
-
-    active:translate-y-0
-    active:scale-100
 
     focus-visible:outline-none
     focus-visible:ring-4
@@ -52,6 +33,48 @@ const primaryButtonVariants = cva(
   `,
   {
     variants: {
+      variant: {
+        primary: `
+          text-white
+
+          bg-gradient-to-r
+          from-blue-600
+          via-blue-500
+          to-cyan-500
+
+          shadow-lg
+
+          hover:-translate-y-1
+          hover:scale-[1.02]
+          hover:shadow-[0_20px_60px_rgba(0,87,255,.35)]
+
+          active:translate-y-0
+          active:scale-100
+        `,
+
+        white: `
+          bg-white
+          text-blue-700
+
+          shadow-xl
+
+          hover:bg-blue-50
+          hover:-translate-y-1
+        `,
+
+        outline: `
+          border
+          border-blue-200
+
+          bg-transparent
+
+          text-blue-600
+
+          hover:bg-blue-50
+          hover:border-blue-500
+        `,
+      },
+
       size: {
         sm: "h-11 px-5 text-sm",
         md: "h-14 px-8 text-base",
@@ -65,29 +88,32 @@ const primaryButtonVariants = cva(
     },
 
     defaultVariants: {
+      variant: "primary",
       size: "md",
       fullWidth: false,
     },
   },
 );
 
-interface PrimaryButtonProps
+export interface PrimaryButtonProps
   extends
-    ButtonHTMLAttributes<HTMLButtonElement>,
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof primaryButtonVariants> {
-  children: ReactNode;
+  asChild?: boolean;
   loading?: boolean;
-  icon?: ReactNode;
+  icon?: React.ReactNode;
 }
 
-const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
+const PrimaryButton = React.forwardRef<HTMLButtonElement, PrimaryButtonProps>(
   (
     {
-      children,
       className,
+      children,
       loading = false,
       disabled,
       icon,
+      asChild = false,
+      variant,
       size,
       fullWidth,
       type = "button",
@@ -95,14 +121,39 @@ const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
     },
     ref,
   ) => {
+    /**
+     * asChild
+     * ------------------------
+     * Slot HARUS menerima SATU child.
+     * Jangan pernah membungkusnya dengan Fragment.
+     */
+    if (asChild) {
+      return (
+        <Slot
+          ref={ref}
+          className={cn(
+            primaryButtonVariants({
+              variant,
+              size,
+              fullWidth,
+            }),
+            className,
+          )}
+          {...props}
+        >
+          {children}
+        </Slot>
+      );
+    }
+
     return (
       <button
         ref={ref}
         type={type}
         disabled={loading || disabled}
-        aria-busy={loading}
         className={cn(
           primaryButtonVariants({
+            variant,
             size,
             fullWidth,
           }),
@@ -113,11 +164,11 @@ const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
         {loading ? (
           <>
             <Loader2 className="h-5 w-5 animate-spin" />
-            <span>Loading...</span>
+            {children}
           </>
         ) : (
           <>
-            <span>{children}</span>
+            {children}
 
             {icon && (
               <span className="transition-transform duration-300 group-hover:translate-x-1">

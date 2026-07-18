@@ -1,28 +1,44 @@
-import { BadgeCheck, Clock3, ShieldCheck, Headset } from "lucide-react";
+import {
+  BadgeCheck,
+  Clock3,
+  ShieldCheck,
+  Wrench,
+  Users,
+  ReceiptText,
+} from "lucide-react";
 
 export const ADVANTAGES = [
   {
-    title: "Professional Technicians",
-    description:
-      "Experienced technicians delivering neat, safe, and professional workmanship for every project.",
     icon: BadgeCheck,
+    title: "Certified Technician",
+    description:
+      "Handled by experienced technicians with professional service standards.",
   },
   {
+    icon: Clock3,
     title: "Fast Response",
     description:
-      "Quick scheduling and responsive support whenever you need technical assistance.",
-    icon: Clock3,
+      "Quick scheduling and responsive support for urgent service requests.",
   },
   {
-    title: "Service Warranty",
-    description:
-      "We stand behind our work with a service warranty for your peace of mind.",
     icon: ShieldCheck,
+    title: "Service Warranty",
+    description: "Every completed service includes a workmanship warranty.",
   },
   {
-    title: "After Sales Support",
+    icon: Wrench,
+    title: "Quality Spare Parts",
+    description: "We use reliable and high-quality replacement components.",
+  },
+  {
+    icon: Users,
+    title: "Residential & Commercial",
     description:
-      "Friendly consultation and continuous support even after the job is completed.",
-    icon: Headset,
+      "Serving homes, offices, schools, restaurants, and commercial buildings.",
+  },
+  {
+    icon: ReceiptText,
+    title: "Transparent Pricing",
+    description: "Clear quotations with no hidden costs before work begins.",
   },
 ] as const;

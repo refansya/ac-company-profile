@@ -7,7 +7,7 @@ import WhyChooseContent from "./WhyChooseContent";
 export default function WhyChoose() {
   return (
     <Section
-      id="why-us"
+      id="why-choose"
       className="
         relative
         overflow-hidden

@@ -1,76 +1,252 @@
-import { BadgeCheck, ShieldCheck } from "lucide-react";
+import Image from "next/image";
+import { BadgeCheck, ShieldCheck, Sparkles } from "lucide-react";
+
+import Float from "@/components/motion/Float";
+
+function FloatingBadge({
+  icon,
+  title,
+  subtitle,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  subtitle: string;
+}) {
+  return (
+    <div
+      className="
+        inline-flex
+        items-center
+        gap-3
+
+        rounded-2xl
+
+        border
+        border-white/70
+
+        bg-white/90
+
+        px-4
+        py-3
+
+        shadow-[0_18px_50px_rgba(15,23,42,.15)]
+
+        backdrop-blur-xl
+
+        transition-all
+        duration-500
+
+        hover:-translate-y-1
+        hover:scale-[1.03]
+      "
+    >
+      <div
+        className="
+          flex
+          h-11
+          w-11
+          items-center
+          justify-center
+
+          rounded-xl
+
+          bg-gradient-to-br
+          from-blue-600
+          via-blue-500
+          to-cyan-400
+
+          text-white
+
+          shadow-lg
+        "
+      >
+        {icon}
+      </div>
+
+      <div>
+        <p className="text-[15px] font-semibold leading-none">{title}</p>
+
+        <span className="mt-1 block text-xs text-slate-500">{subtitle}</span>
+      </div>
+    </div>
+  );
+}
 
 export default function WhyChooseImage() {
   return (
-    <div className="relative">
+    <div className="relative mx-auto w-full max-w-[560px]">
+      {/* Glow */}
+
       <div
         className="
-          aspect-[4/5]
+          absolute
+          -left-16
+          top-10
+          -z-10
 
-          overflow-hidden
+          h-72
+          w-72
 
-          rounded-[40px]
+          rounded-full
 
-          bg-gradient-to-br
-          from-blue-100
-          via-slate-100
-          to-cyan-100
+          bg-blue-500/20
+
+          blur-[140px]
         "
       />
 
       <div
         className="
           absolute
-          left-6
-          top-6
+          -right-16
+          bottom-10
+          -z-10
 
-          rounded-2xl
+          h-72
+          w-72
+
+          rounded-full
+
+          bg-cyan-400/20
+
+          blur-[140px]
+        "
+      />
+
+      {/* Image */}
+
+      <div
+        className="
+          relative
+
+          overflow-hidden
+
+          rounded-[32px]
+
+          border
+          border-white/50
 
           bg-white
 
-          px-5
-          py-4
-
-          shadow-xl
+          shadow-[0_40px_90px_rgba(15,23,42,.18)]
         "
       >
-        <div className="flex items-center gap-3">
-          <BadgeCheck className="text-blue-600" size={22} />
+        <Image
+          src="/images/why-choose/ac-cleaning-demo.jpg"
+          alt="Professional AC Cleaning Service"
+          width={560}
+          height={760}
+          priority
+          className="
+            h-[720px]
+            w-full
 
-          <div>
-            <h4 className="font-bold">Certified Team</h4>
+            object-cover
 
-            <p className="text-sm text-slate-500">Professional Technicians</p>
-          </div>
-        </div>
+            transition-transform
+            duration-700
+
+            hover:scale-105
+          "
+        />
+
+        {/* Gradient */}
+
+        <div
+          className="
+            absolute
+            inset-0
+
+            bg-gradient-to-t
+
+            from-slate-950/35
+            via-transparent
+            to-transparent
+          "
+        />
+
+        {/* Frame */}
+
+        <div
+          className="
+            pointer-events-none
+
+            absolute
+            inset-0
+
+            rounded-[32px]
+
+            ring-1
+            ring-inset
+            ring-white/20
+          "
+        />
       </div>
 
-      <div
+      {/* Floating Badge */}
+
+      <Float
+        delay={0}
+        className="
+          absolute
+          left-6
+          top-6
+
+          z-20
+
+          hidden
+
+          md:block
+        "
+      >
+        <FloatingBadge
+          icon={<Sparkles size={18} />}
+          title="Trusted Service"
+          subtitle="Reliable & Professional"
+        />
+      </Float>
+
+      <Float
+        delay={1}
+        className="
+          absolute
+          bottom-6
+          left-6
+
+          z-20
+
+          hidden
+
+          md:block
+        "
+      >
+        <FloatingBadge
+          icon={<BadgeCheck size={20} />}
+          title="Certified Team"
+          subtitle="Experienced Technician"
+        />
+      </Float>
+
+      <Float
+        delay={2}
         className="
           absolute
           bottom-6
           right-6
 
-          rounded-2xl
+          z-20
 
-          bg-white
+          hidden
 
-          px-5
-          py-4
-
-          shadow-xl
+          md:block
         "
       >
-        <div className="flex items-center gap-3">
-          <ShieldCheck className="text-green-600" size={22} />
-
-          <div>
-            <h4 className="font-bold">Service Warranty</h4>
-
-            <p className="text-sm text-slate-500">Guaranteed Quality</p>
-          </div>
-        </div>
-      </div>
+        <FloatingBadge
+          icon={<ShieldCheck size={20} />}
+          title="Warranty Service"
+          subtitle="Guaranteed Workmanship"
+        />
+      </Float>
     </div>
   );
 }

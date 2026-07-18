@@ -1,4 +1,6 @@
-export const COMPANY = {
+import type { Company } from "@/types/company";
+
+export const COMPANY: Company = {
   // ======================================================
   // Brand Identity
   // ======================================================
@@ -11,6 +13,8 @@ export const COMPANY = {
 
   tagline: "Smart Cooling & Electronic Solutions",
 
+  slogan: "Reliable Cooling, Trusted Service.",
+
   description:
     "PROJECT.ID SERVICES provides professional air conditioning installation, maintenance, repair, preventive maintenance, and electronic solutions for residential, commercial, and industrial sectors.",
 
@@ -22,7 +26,7 @@ export const COMPANY = {
 
   website: "https://project-id-services.com",
 
-  logo: "/logo/logo.svg",
+  logo: "/public/images/logo/logomain.svg",
 
   favicon: "/favicon.ico",
 
@@ -32,19 +36,17 @@ export const COMPANY = {
   // Contact
   // ======================================================
 
+  phone: "6281776756863",
+
+  phoneDisplay: "+62 817-7675-6863",
+
+  whatsappUrl: "https://wa.me/6281776756863",
+
   email: "info@project-id-services.com",
 
   supportEmail: "support@project-id-services.com",
 
   salesEmail: "sales@project-id-services.com",
-
-  phone: "6281776756863",
-
-  phoneDisplay: "+62 817-7675-6863",
-
-  whatsapp: "6281776756863",
-
-  whatsappUrl: "https://wa.me/6281776756863",
 
   // ======================================================
   // Address
@@ -53,9 +55,11 @@ export const COMPANY = {
   address: {
     street: "",
 
-    city: "Jakarta",
+    district: "",
 
-    province: "DKI Jakarta",
+    city: "Makassar",
+
+    province: "Sulawesi Selatan",
 
     postalCode: "",
 
@@ -63,11 +67,17 @@ export const COMPANY = {
   },
 
   // ======================================================
+  // Coverage Area
+  // ======================================================
+
+  coverageArea: ["Makassar", "Gowa", "Maros", "Takalar"],
+
+  // ======================================================
   // Business Hours
   // ======================================================
 
   businessHours: {
-    weekdays: "08:00 - 17:00",
+    mondayFriday: "08:00 - 17:00",
 
     saturday: "08:00 - 15:00",
 
@@ -75,10 +85,25 @@ export const COMPANY = {
   },
 
   // ======================================================
+  // Service Categories
+  // ======================================================
+
+  serviceCategories: [
+    "Air Conditioner Installation",
+    "Air Conditioner Maintenance",
+    "Air Conditioner Repair",
+    "Preventive Maintenance",
+    "Electronic Repair",
+    "Television Repair",
+  ],
+
+  // ======================================================
   // Social Media
   // ======================================================
 
   social: {
+    whatsapp: "https://wa.me/6281776756863",
+
     instagram: "",
 
     facebook: "",
@@ -91,35 +116,54 @@ export const COMPANY = {
   },
 
   // ======================================================
-  // Google
+  // Google Business
   // ======================================================
 
   google: {
+    // URL untuk tombol "Open in Google Maps"
     maps: "",
+
+    // URL khusus iframe embed
+    embed: "",
 
     review: "",
   },
+
+  // ======================================================
+  // Highlights
+  // ======================================================
+
+  highlights: ["Fast Response", "Professional Technician", "Warranty Service"],
+
+  // ======================================================
+  // Footer
+  // ======================================================
+
+  copyright: `© ${new Date().getFullYear()} PROJECT.ID SERVICES. All rights reserved.`,
 
   // ======================================================
   // SEO
   // ======================================================
 
   seo: {
-    title: "PROJECT.ID SERVICES",
+    title: "PROJECT.ID SERVICES | Smart Cooling & Electronic Solutions",
 
-    description: "Smart Cooling & Electronic Solutions",
+    description:
+      "Professional AC installation, AC maintenance, AC repair, preventive maintenance, and electronic solutions in Makassar and surrounding areas.",
 
     keywords: [
-      "Service AC",
-      "Instalasi AC",
-      "Perawatan AC",
-      "Cuci AC",
-      "Perbaikan AC",
-      "Preventive Maintenance",
-      "HVAC",
-      "Air Conditioning",
-      "Electronic Solutions",
+      "Service AC Makassar",
+      "Cuci AC Makassar",
+      "Instalasi AC Makassar",
+      "Perbaikan AC Makassar",
+      "Maintenance AC Makassar",
+      "Preventive Maintenance AC",
+      "Service Elektronik Makassar",
+      "Teknisi AC Makassar",
+      "Smart Cooling",
       "PROJECT.ID SERVICES",
     ],
   },
-} as const;
+};
+
+export default COMPANY;

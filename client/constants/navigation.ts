@@ -1,26 +1,18 @@
 export const NAVIGATION = [
   {
-    title: "Home",
-    href: "/",
+    label: "Home",
+    href: "#home",
   },
   {
-    title: "Solutions",
-    href: "/solutions",
+    label: "Services",
+    href: "#services",
   },
   {
-    title: "Projects",
-    href: "/projects",
+    label: "Why Choose",
+    href: "#why-choose",
   },
   {
-    title: "About",
-    href: "/about",
-  },
-  {
-    title: "Blog",
-    href: "/blog",
-  },
-  {
-    title: "Contact",
-    href: "/contact",
+    label: "Contact",
+    href: "#contact",
   },
 ] as const;

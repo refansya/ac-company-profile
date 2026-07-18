@@ -1,24 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
-
-interface Props {
-  children: ReactNode;
-}
 
 export default function Float({
   children,
-}: Props) {
+  className,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) {
   return (
     <motion.div
+      className={className}
       animate={{
-        y: [0, -12, 0],
+        y: [0, -8, 0],
       }}
       transition={{
-        duration: 5,
+        duration: 6,
         repeat: Infinity,
         ease: "easeInOut",
+        delay,
       }}
     >
       {children}
