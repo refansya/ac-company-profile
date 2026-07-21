@@ -4,6 +4,7 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 
 import { SITE } from "@/config/site";
+import { COMPANY } from "@/constants/company";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -18,14 +19,19 @@ export const metadata: Metadata = {
   },
 
   description: SITE.description,
-
-  keywords: [
-    "Service AC",
-    "Air Conditioning",
-    "HVAC",
-    "Electronic Solutions",
-    "Project.id Services",
-  ],
+  keywords: COMPANY.seo.keywords,
+  alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 
   openGraph: {
     title: SITE.title,
@@ -40,6 +46,12 @@ export const metadata: Metadata = {
 
     type: "website",
   },
+  twitter: {
+    card: "summary",
+    title: SITE.title,
+    description: SITE.description,
+  },
+  icons: { icon: "/favicon.ico" },
 };
 
 export default function RootLayout({

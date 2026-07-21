@@ -136,7 +136,7 @@ export default function WhyChooseImage() {
           alt="Professional AC Cleaning Service"
           width={560}
           height={760}
-          priority
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 560px"
           className="
             h-[720px]
             w-full

@@ -1,16 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, PhoneCall } from "lucide-react";
+import { PhoneCall } from "lucide-react";
 
 import { COMPANY } from "@/constants/company";
-import PrimaryButton from "@/components/shared/PrimaryButton";
 
 export default function NavbarCTA() {
-  const openWhatsApp = () => {
-    window.open(COMPANY.whatsappUrl, "_blank", "noopener,noreferrer");
-  };
-
   return (
-    <div className="hidden items-center gap-4 lg:flex">
+    <div className="hidden items-center lg:flex">
       {/* WhatsApp Number */}
       <Link
         href={COMPANY.whatsappUrl}
@@ -71,15 +66,6 @@ export default function NavbarCTA() {
 
         <span>{COMPANY.phoneDisplay}</span>
       </Link>
-
-      {/* Book Service */}
-      <PrimaryButton
-        size="sm"
-        icon={<ArrowRight size={18} />}
-        onClick={openWhatsApp}
-      >
-        Book Service
-      </PrimaryButton>
     </div>
   );
 }

@@ -1,9 +1,9 @@
 import { COMPANY } from "@/constants/company";
 
 export const SITE = {
-  title: COMPANY.name,
+  title: COMPANY.seo.title,
 
-  description: COMPANY.description,
+  description: COMPANY.seo.description,
 
   url: COMPANY.website,
 

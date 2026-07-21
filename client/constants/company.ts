@@ -1,5 +1,8 @@
 import type { Company } from "@/types/company";
 
+const MAPS_ADDRESS =
+  "Blok E, Nusa Idaman Residence No.50, Moncongloe, Kec. Moncong Loe, Kabupaten Maros, Sulawesi Selatan 90162";
+
 export const COMPANY: Company = {
   // ======================================================
   // Brand Identity
@@ -26,7 +29,7 @@ export const COMPANY: Company = {
 
   website: "https://project-id-services.com",
 
-  logo: "/public/images/logo/logomain.svg",
+  logo: "/logo/logomain.svg",
 
   favicon: "/favicon.ico",
 
@@ -40,7 +43,9 @@ export const COMPANY: Company = {
 
   phoneDisplay: "+62 817-7675-6863",
 
-  whatsappUrl: "https://wa.me/6281776756863",
+  whatsappUrl: `https://wa.me/6281776756863?text=${encodeURIComponent(
+    "Halo, Project.ID Services! Saya ingin berkonsultasi terkait layanan AC atau elektronik. Mohon informasinya, terima kasih.",
+  )}`,
 
   email: "info@project-id-services.com",
 
@@ -53,15 +58,15 @@ export const COMPANY: Company = {
   // ======================================================
 
   address: {
-    street: "",
+    street: "Blok E, Nusa Idaman Residence No.50",
 
-    district: "",
+    district: "Moncongloe, Kec. Moncong Loe",
 
-    city: "Makassar",
+    city: "Kabupaten Maros",
 
     province: "Sulawesi Selatan",
 
-    postalCode: "",
+    postalCode: "90162",
 
     country: "Indonesia",
   },
@@ -121,10 +126,10 @@ export const COMPANY: Company = {
 
   google: {
     // URL untuk tombol "Open in Google Maps"
-    maps: "",
+    maps: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAPS_ADDRESS)}`,
 
     // URL khusus iframe embed
-    embed: "",
+    embed: `https://www.google.com/maps?q=${encodeURIComponent(MAPS_ADDRESS)}&output=embed`,
 
     review: "",
   },

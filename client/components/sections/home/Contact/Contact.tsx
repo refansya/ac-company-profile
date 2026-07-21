@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -12,7 +10,6 @@ import { FaInstagram } from "react-icons/fa";
 
 import { COMPANY } from "@/constants/company";
 
-import FadeUp from "@/components/motion/FadeUp";
 import Container from "@/components/shared/Container";
 import SectionTitle from "@/components/shared/SectionTitle";
 
@@ -30,19 +27,16 @@ export default function Contact() {
       </div>
 
       <Container className="relative z-10">
-        <FadeUp>
-          <SectionTitle
-            badge="CONTACT"
-            title="Let's Talk About Your Project"
-            description="Need AC installation, preventive maintenance, or electronic repair? Contact our team and we'll be happy to assist you."
-            align="center"
-          />
-        </FadeUp>
+        <SectionTitle
+          badge="CONTACT"
+          title="Let's Talk About Your Project"
+          description="Need AC installation, preventive maintenance, or electronic repair? Contact our team and we'll be happy to assist you."
+          align="center"
+        />
 
         <div className="mt-16 grid gap-8 xl:grid-cols-[360px_minmax(0,1fr)]">
           {/* Left */}
-          <FadeUp delay={0.1}>
-            <div className="grid gap-5">
+          <div className="grid gap-5">
               <ContactCard
                 icon={<MessageCircle size={22} />}
                 title="WhatsApp"
@@ -66,12 +60,10 @@ export default function Contact() {
                 description="Business inquiry."
                 href={`mailto:${COMPANY.email}`}
               />
-            </div>
-          </FadeUp>
+          </div>
 
           {/* Google Maps */}
-          <FadeUp delay={0.2}>
-            <div className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-lg shadow-slate-100">
+          <div className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-lg shadow-slate-100">
               {/* Header */}
               <div className="flex items-center gap-4 border-b border-slate-200 px-8 py-7">
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 text-white shadow-md">
@@ -92,6 +84,7 @@ export default function Contact() {
 
               {COMPANY.google.embed ? (
                 <iframe
+                  title={`Peta lokasi ${COMPANY.legalName}`}
                   src={COMPANY.google.embed}
                   width="100%"
                   height="460"
@@ -147,13 +140,11 @@ export default function Contact() {
                   <ArrowUpRight size={16} />
                 </Link>
               </div>
-            </div>
-          </FadeUp>
+          </div>
         </div>
 
         {/* Business Hours */}
-        <FadeUp delay={0.3}>
-          <div className="mt-8 rounded-[32px] border border-slate-200 bg-white p-7 shadow-lg shadow-slate-100 backdrop-blur">
+        <div className="mt-8 rounded-[32px] border border-slate-200 bg-white p-7 shadow-lg shadow-slate-100 backdrop-blur">
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div className="flex items-center gap-4">
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 text-white shadow-lg">
@@ -199,8 +190,7 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-          </div>
-        </FadeUp>
+        </div>
       </Container>
     </section>
   );

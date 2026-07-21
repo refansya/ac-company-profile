@@ -1,5 +1,3 @@
-import FadeUp from "@/components/motion/FadeUp";
-
 import HeroButtons from "./HeroButtons";
 import HeroRating from "./HeroRating";
 import HeroStats from "./HeroStats";
@@ -8,8 +6,7 @@ import HeroServiceTags from "./HeroServiceTags";
 export default function HeroContent() {
   return (
     <div className="flex flex-col">
-      <FadeUp delay={0.1}>
-        <span
+      <span
           className="
             inline-flex
             w-fit
@@ -26,21 +23,17 @@ export default function HeroContent() {
           "
         >
           PROJECT.ID SERVICES
-        </span>
-      </FadeUp>
+      </span>
 
-      <FadeUp delay={0.2}>
-        <h1 className="mt-8 text-5xl font-black leading-[1.05] lg:text-7xl">
-          Smart Cooling
+      <h1 className="mt-8 text-5xl font-black leading-[1.05] lg:text-7xl">
+        Smart Cooling
           <br />
           & Electronic
           <br />
           Solutions
-        </h1>
-      </FadeUp>
+      </h1>
 
-      <FadeUp delay={0.3}>
-        <p
+      <p
           className="
             mt-8
             max-w-xl
@@ -52,32 +45,23 @@ export default function HeroContent() {
           Professional air conditioning installation, maintenance, repair,
           preventive maintenance, and electronic solutions for residential,
           commercial, and industrial sectors.
-        </p>
-      </FadeUp>
+      </p>
 
-      <FadeUp delay={0.4}>
-        <div className="mt-10">
-          <HeroButtons />
-        </div>
-      </FadeUp>
+      <div className="mt-10">
+        <HeroButtons />
+      </div>
 
-      <FadeUp delay={0.5}>
-        <div className="mt-8">
-          <HeroRating />
-        </div>
-      </FadeUp>
+      <div className="mt-8">
+        <HeroRating />
+      </div>
 
-      <FadeUp delay={0.6}>
-        <div className="mt-10">
-          <HeroStats />
-        </div>
-      </FadeUp>
+      <div className="mt-10">
+        <HeroStats />
+      </div>
 
-      <FadeUp delay={0.7}>
-        <div className="mt-10">
-          <HeroServiceTags />
-        </div>
-      </FadeUp>
+      <div className="mt-10">
+        <HeroServiceTags />
+      </div>
     </div>
   );
 }
