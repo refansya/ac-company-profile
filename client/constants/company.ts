@@ -47,7 +47,7 @@ export const COMPANY: Company = {
     "Halo, Project.ID Services! Saya ingin berkonsultasi terkait layanan AC atau elektronik. Mohon informasinya, terima kasih.",
   )}`,
 
-  email: "info@project-id-services.com",
+  email: "projectid@gmail.com",
 
   supportEmail: "support@project-id-services.com",
 

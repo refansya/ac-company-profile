@@ -1,6 +1,6 @@
 const SERVICES = [
   "Air Conditioning",
-  "HVAC",
+  "TV",
   "Preventive Maintenance",
   "Electronic",
 ];
