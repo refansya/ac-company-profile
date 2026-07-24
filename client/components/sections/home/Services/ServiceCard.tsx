@@ -198,42 +198,6 @@ export default function ServiceCard({
           </div>
         ))}
       </div>
-
-      {/* Footer */}
-      <div
-        className="
-          mt-8
-
-          flex
-          items-center
-          justify-between
-
-          border-t
-          border-slate-200
-
-          pt-6
-        "
-      >
-        <span
-          className="
-            font-semibold
-
-            text-[var(--color-primary)]
-          "
-        >
-          Explore Service
-        </span>
-
-        <ArrowRight
-          size={18}
-          className="
-            transition-transform
-            duration-300
-
-            group-hover:translate-x-2
-          "
-        />
-      </div>
     </article>
   );
 }

@@ -160,13 +160,7 @@ export default function WhyChooseCard({
 
           group-hover:opacity-100
         "
-      >
-        Learn More
-        <ArrowUpRight
-          size={16}
-          className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
-        />
-      </div>
+      ></div>
     </div>
   );
 }
