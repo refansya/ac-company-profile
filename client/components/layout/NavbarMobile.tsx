@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 
 import { ArrowRight, ChevronRight, Menu, PhoneCall, X } from "lucide-react";
@@ -13,8 +14,17 @@ import useActiveSection from "@/hooks/useActiveSection";
 
 import { NAVIGATION } from "@/constants/navigation";
 
+const subscribe = () => () => {};
+
 export default function NavbarMobile() {
   const [open, setOpen] = useState(false);
+
+  // false di server, true di client (aman untuk portal & hydration)
+  const mounted = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  );
 
   const activeSection = useActiveSection();
 
@@ -66,185 +76,199 @@ export default function NavbarMobile() {
         <Menu size={22} />
       </button>
 
-      {/* Overlay */}
-      <div
-        onClick={() => setOpen(false)}
-        className={`
-          fixed
-          inset-0
-          z-40
-          bg-slate-950/30
-          backdrop-blur-sm
-          transition-all
-          duration-300
+      {mounted &&
+        createPortal(
+          <>
+            {/* Overlay */}
+            <div
+              onClick={() => setOpen(false)}
+              aria-hidden="true"
+              className={`
+                fixed
+                inset-0
+                z-[60]
+                bg-slate-950/30
+                backdrop-blur-sm
+                transition-all
+                duration-300
 
-          ${
-            open
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
-          }
-        `}
-      />
+                ${
+                  open
+                    ? "opacity-100 pointer-events-auto"
+                    : "opacity-0 pointer-events-none"
+                }
+              `}
+            />
 
-      {/* Drawer */}
-      <aside
-        className={`
-          fixed
-          top-0
-          right-0
-          z-50
+            {/* Drawer */}
+            <aside
+              role="dialog"
+              aria-modal="true"
+              aria-label="Navigation menu"
+              className={`
+                fixed
+                top-0
+                right-0
+                z-[70]
 
-          flex
-          h-dvh
-          w-[320px]
-          max-w-[85vw]
-          flex-col
+                flex
+                h-dvh
+                w-[320px]
+                max-w-[85vw]
+                flex-col
 
-          border-l
-          border-slate-200
+                border-l
+                border-slate-200
 
-          bg-white/95
-          backdrop-blur-xl
+                bg-white/95
+                backdrop-blur-xl
 
-          p-6
+                p-6
 
-          shadow-2xl
+                shadow-2xl
 
-          transition-all
-          duration-300
+                transition-all
+                duration-300
 
-          ${open ? "translate-x-0 visible" : "translate-x-full invisible"}
-        `}
-      >
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <Logo className="h-9" />
+                ${open ? "translate-x-0 visible" : "translate-x-full invisible"}
+              `}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between">
+                <Logo className="h-9" />
 
-          <button
-            type="button"
-            aria-label="Close Navigation"
-            onClick={() => setOpen(false)}
-            className="
-              rounded-xl
-              p-2
-              transition-colors
-              hover:bg-slate-100
-            "
-          >
-            <X size={22} />
-          </button>
-        </div>
-
-        <div className="my-6 h-px bg-slate-200" />
-
-        {/* Navigation */}
-        <nav className="space-y-2">
-          {NAVIGATION.map((item) => {
-            const active = activeSection === item.href.replace("#", "");
-
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className={`
-                  group
-
-                  flex
-                  items-center
-                  justify-between
-
-                  rounded-xl
-
-                  px-4
-                  py-3
-
-                  text-base
-                  font-semibold
-
-                  transition-all
-                  duration-300
-
-                  ${
-                    active
-                      ? "bg-blue-50 text-[var(--color-primary)]"
-                      : "text-slate-700 hover:bg-slate-100 hover:text-[var(--color-primary)]"
-                  }
-                `}
-              >
-                {item.label}
-
-                <ChevronRight
-                  size={18}
+                <button
+                  type="button"
+                  aria-label="Close Navigation"
+                  onClick={() => setOpen(false)}
                   className="
-                    opacity-0
+                    rounded-xl
+                    p-2
+                    transition-colors
+                    hover:bg-slate-100
+                  "
+                >
+                  <X size={22} />
+                </button>
+              </div>
+
+              <div className="my-6 h-px bg-slate-200" />
+
+              {/* Navigation */}
+              <nav className="space-y-2">
+                {NAVIGATION.map((item) => {
+                  const active = activeSection === item.href.replace("#", "");
+
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className={`
+                        group
+
+                        flex
+                        items-center
+                        justify-between
+
+                        rounded-xl
+
+                        px-4
+                        py-3
+
+                        text-base
+                        font-semibold
+
+                        transition-all
+                        duration-300
+
+                        ${
+                          active
+                            ? "bg-blue-50 text-[var(--color-primary)]"
+                            : "text-slate-700 hover:bg-slate-100 hover:text-[var(--color-primary)]"
+                        }
+                      `}
+                    >
+                      {item.label}
+
+                      <ChevronRight
+                        size={18}
+                        className="
+                          opacity-0
+                          transition-all
+                          duration-300
+
+                          group-hover:translate-x-1
+                          group-hover:opacity-100
+                        "
+                      />
+                    </Link>
+                  );
+                })}
+              </nav>
+
+              {/* Footer */}
+              <div className="mt-auto space-y-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">
+                    Need Assistance?
+                  </p>
+
+                  <p className="mt-1 text-sm text-slate-500">
+                    Contact our team anytime.
+                  </p>
+                </div>
+
+                <Link
+                  href={COMPANY.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    flex
+                    items-center
+                    justify-center
+                    gap-2
+
+                    rounded-xl
+
+                    border
+                    border-slate-200
+
+                    py-3
+
+                    text-sm
+                    font-medium
+
                     transition-all
                     duration-300
 
-                    group-hover:translate-x-1
-                    group-hover:opacity-100
+                    hover:border-blue-200
+                    hover:text-[var(--color-primary)]
                   "
-                />
-              </Link>
-            );
-          })}
-        </nav>
+                >
+                  <PhoneCall size={18} />
 
-        {/* Footer */}
-        <div className="mt-auto space-y-4">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">
-              Need Assistance?
-            </p>
+                  {COMPANY.phoneDisplay}
+                </Link>
 
-            <p className="mt-1 text-sm text-slate-500">
-              Contact our team anytime.
-            </p>
-          </div>
-
-          <Link
-            href={COMPANY.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              flex
-              items-center
-              justify-center
-              gap-2
-
-              rounded-xl
-
-              border
-              border-slate-200
-
-              py-3
-
-              text-sm
-              font-medium
-
-              transition-all
-              duration-300
-
-              hover:border-blue-200
-              hover:text-[var(--color-primary)]
-            "
-          >
-            <PhoneCall size={18} />
-
-            {COMPANY.phoneDisplay}
-          </Link>
-
-          <PrimaryButton
-            fullWidth
-            icon={<ArrowRight size={18} />}
-            onClick={() =>
-              window.open(COMPANY.whatsappUrl, "_blank", "noopener,noreferrer")
-            }
-          >
-            Book Service
-          </PrimaryButton>
-        </div>
-      </aside>
+                <PrimaryButton
+                  fullWidth
+                  icon={<ArrowRight size={18} />}
+                  onClick={() =>
+                    window.open(
+                      COMPANY.whatsappUrl,
+                      "_blank",
+                      "noopener,noreferrer",
+                    )
+                  }
+                >
+                  Book Service
+                </PrimaryButton>
+              </div>
+            </aside>
+          </>,
+          document.body,
+        )}
     </div>
   );
 }
