@@ -1,4 +1,4 @@
-import { ArrowRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
 
 interface ServiceCardProps {
   id: string;

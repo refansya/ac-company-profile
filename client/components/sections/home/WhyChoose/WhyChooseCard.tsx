@@ -1,4 +1,4 @@
-import { LucideIcon, ArrowUpRight } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 
 interface Props {
   icon: LucideIcon;
