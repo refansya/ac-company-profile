@@ -1,5 +1,4 @@
 import HeroButtons from "./HeroButtons";
-import HeroRating from "./HeroRating";
 import HeroStats from "./HeroStats";
 import HeroServiceTags from "./HeroServiceTags";
 
@@ -7,55 +6,51 @@ export default function HeroContent() {
   return (
     <div className="flex flex-col">
       <span
-          className="
-            inline-flex
-            w-fit
-            rounded-full
-            border
-            border-[var(--color-primary)]/20
-            bg-[var(--color-primary)]/10
-            px-4
-            py-2
-            text-sm
-            font-semibold
-            tracking-wide
-            text-[var(--color-primary)]
-          "
-        >
-          PROJECT.ID SERVICES
+        className="
+          inline-flex
+          w-fit
+          rounded-full
+          border
+          border-[var(--color-primary)]/20
+          bg-[var(--color-primary)]/10
+          px-4
+          py-2
+          text-sm
+          font-semibold
+          tracking-wide
+          text-[var(--color-primary)]
+        "
+      >
+        PROJECT.ID SERVICES
       </span>
 
       <h1 className="mt-8 text-5xl font-black leading-[1.05] lg:text-7xl">
         Smart Cooling
-          <br />
-          & Electronic
-          <br />
-          Solutions
+        <br />
+        & Electronic
+        <br />
+        Solutions
       </h1>
 
       <p
-          className="
-            mt-8
-            max-w-xl
-            text-lg
-            leading-8
-            text-[var(--color-muted)]
-          "
-        >
-          Professional air conditioning installation, maintenance, repair,
-          preventive maintenance, and electronic solutions for residential,
-          commercial, and industrial sectors.
+        className="
+          mt-8
+          max-w-xl
+          text-lg
+          leading-8
+          text-[var(--color-muted)]
+        "
+      >
+        Professional air conditioning installation, maintenance, repair,
+        preventive maintenance, and electronic solutions for residential,
+        commercial, and industrial sectors.
       </p>
 
       <div className="mt-10">
         <HeroButtons />
       </div>
 
-      <div className="mt-8">
-        <HeroRating />
-      </div>
-
-      <div className="mt-10">
+      <div className="mt-12">
         <HeroStats />
       </div>
 

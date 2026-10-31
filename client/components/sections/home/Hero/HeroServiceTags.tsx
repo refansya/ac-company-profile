@@ -7,7 +7,7 @@ const SERVICES = [
 
 export default function HeroServiceTags() {
   return (
-    <div className="mt-12 flex flex-wrap gap-3">
+    <div className="flex flex-wrap gap-3">
       {SERVICES.map((service) => (
         <span
           key={service}

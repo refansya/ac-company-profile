@@ -22,7 +22,7 @@ const stats = [
 
 export default function HeroStats() {
   return (
-    <div className="mt-14 grid max-w-xl grid-cols-3 gap-8">
+    <div className="grid max-w-xl grid-cols-3 gap-8">
       {stats.map((item) => (
         <div key={item.label}>
           <h3 className="text-4xl font-black text-slate-900">
