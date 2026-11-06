@@ -1,8 +1,5 @@
 import type { Company } from "@/types/company";
 
-const MAPS_ADDRESS =
-  "Blok E, Nusa Idaman Residence No.50, Moncongloe, Kec. Moncong Loe, Kabupaten Maros, Sulawesi Selatan 90162";
-
 export const COMPANY: Company = {
   // ======================================================
   // Brand Identity
@@ -30,6 +27,8 @@ export const COMPANY: Company = {
   website: "https://projectidservice.com",
 
   logo: "/logo/logomain.svg",
+
+  favicon: "/logo/logomain.svg",
 
   ogImage: "/images/og-image.jpg",
 
