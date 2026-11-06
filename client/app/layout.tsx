@@ -51,7 +51,10 @@ export const metadata: Metadata = {
     title: SITE.title,
     description: SITE.description,
   },
-  icons: { icon: "/favicon.ico" },
+  icons: {
+    icon: "/logo/logomain.svg",
+    shortcut: "/logo/logomain.svg",
+  },
 };
 
 export default function RootLayout({
@@ -61,9 +64,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
-      <body className={geist.className}>
-        {children}
-      </body>
+      <body className={geist.className}>{children}</body>
     </html>
   );
 }

@@ -1,5 +1,7 @@
 {
-  "name":"ac-company-profile",
-  "private":true,
-  "workspaces":["client","server"]
+  "name": "ac-company-profile",
+  "private": true,
+  "workspaces": [
+    "client"
+  ]
 }

@@ -27,11 +27,9 @@ export const COMPANY: Company = {
   // Website
   // ======================================================
 
-  website: "https://project-id-services.com",
+  website: "https://projectidservice.com",
 
   logo: "/logo/logomain.svg",
-
-  favicon: "/favicon.ico",
 
   ogImage: "/images/og-image.jpg",
 
@@ -47,11 +45,11 @@ export const COMPANY: Company = {
     "Halo, Project.ID Services! Saya ingin berkonsultasi terkait layanan AC atau elektronik. Mohon informasinya, terima kasih.",
   )}`,
 
-  email: "projectid@gmail.com",
+  email: "projectidservice@gmail.com",
 
-  supportEmail: "support@project-id-services.com",
+  supportEmail: "projectidservice@gmail.com",
 
-  salesEmail: "sales@project-id-services.com",
+  salesEmail: "projectidservice@gmail.com",
 
   // ======================================================
   // Address
