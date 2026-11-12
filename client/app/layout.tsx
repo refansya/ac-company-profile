@@ -45,15 +45,26 @@ export const metadata: Metadata = {
     siteName: SITE.title,
 
     type: "website",
+
+    images: [
+      {
+        url: COMPANY.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${COMPANY.legalName} - Service AC Makassar`,
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: SITE.title,
     description: SITE.description,
+    images: [COMPANY.ogImage],
   },
   icons: {
     icon: "/logo/logomain.svg",
     shortcut: "/logo/logomain.svg",
+    apple: "/logo/logomain.svg",
   },
 };
 

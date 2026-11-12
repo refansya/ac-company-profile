@@ -30,7 +30,7 @@ export const COMPANY: Company = {
 
   favicon: "/logo/logomain.svg",
 
-  ogImage: "/images/og-image.jpg",
+  ogImage: "/images/why-choose/foto1.jpg",
 
   // ======================================================
   // Contact
@@ -130,6 +130,11 @@ export const COMPANY: Company = {
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248.35441012027064!2d119.53577698562064!3d-5.156603929669747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x281fcefda4f2f097%3A0x1a226f71515c52db!2sProject.id%20Services!5e0!3m2!1sid!2sid!4v1793481371877!5m2!1sid!2sid",
 
     review: "",
+
+    coordinates: {
+      latitude: -5.1566039,
+      longitude: 119.535777,
+    },
   },
 
   // ======================================================
@@ -149,10 +154,10 @@ export const COMPANY: Company = {
   // ======================================================
 
   seo: {
-    title: "PROJECT.ID SERVICES | Smart Cooling & Electronic Solutions",
+    title: "PROJECT.ID SERVICES | Service AC & Solusi Elektronik Makassar",
 
     description:
-      "Professional AC installation, AC maintenance, AC repair, preventive maintenance, and electronic solutions in Makassar and surrounding areas.",
+      "Jasa service AC, cuci AC, perbaikan, instalasi, dan maintenance AC serta perangkat elektronik terpercaya di Makassar, Maros, dan Gowa. Teknisi profesional & bergaransi.",
 
     keywords: [
       "Service AC Makassar",
@@ -163,6 +168,8 @@ export const COMPANY: Company = {
       "Preventive Maintenance AC",
       "Service Elektronik Makassar",
       "Teknisi AC Makassar",
+      "Service AC Maros",
+      "Service AC Gowa",
       "Smart Cooling",
       "PROJECT.ID SERVICES",
     ],

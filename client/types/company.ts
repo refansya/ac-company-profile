@@ -92,6 +92,10 @@ export interface Company {
     maps: string;
     embed: string;
     review: string;
+    coordinates?: {
+      latitude: number;
+      longitude: number;
+    };
   };
 
   // ======================================================

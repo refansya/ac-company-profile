@@ -16,7 +16,9 @@ const localBusinessSchema = {
   url: COMPANY.website,
   telephone: `+${COMPANY.phone}`,
   email: COMPANY.email,
-  image: `${COMPANY.website}${COMPANY.logo}`,
+  image: `${COMPANY.website}${COMPANY.ogImage}`,
+  hasMap: COMPANY.google.maps,
+  priceRange: "$$",
   address: {
     "@type": "PostalAddress",
     streetAddress: `${COMPANY.address.street}, ${COMPANY.address.district}`,
@@ -25,11 +27,33 @@ const localBusinessSchema = {
     postalCode: COMPANY.address.postalCode,
     addressCountry: "ID",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: COMPANY.google.coordinates?.latitude || -5.1566039,
+    longitude: COMPANY.google.coordinates?.longitude || 119.535777,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "17:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday"],
+      opens: "08:00",
+      closes: "15:00",
+    },
+  ],
   areaServed: COMPANY.coverageArea.map((name) => ({
     "@type": "City",
     name,
   })),
-  sameAs: Object.values(COMPANY.social).filter(Boolean),
+  sameAs: [
+    COMPANY.social.instagram,
+    COMPANY.google.maps,
+  ].filter(Boolean),
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Layanan PROJECT.ID SERVICES",

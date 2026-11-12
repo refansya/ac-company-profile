@@ -46,10 +46,10 @@ export default function HeroStats() {
     <div className="grid max-w-xl grid-cols-3 gap-8">
       {stats.map((item) => (
         <div key={item.label}>
-          <h3 className="text-4xl font-black text-slate-900">
+          <p className="text-4xl font-black text-slate-900">
             <Counter end={item.value} />
             {item.suffix}
-          </h3>
+          </p>
 
           <p className="mt-2 text-sm leading-6 text-slate-500">{item.label}</p>
         </div>
